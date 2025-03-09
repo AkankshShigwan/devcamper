@@ -621,8 +621,7 @@ Security is a core component of DevCamper. The platform follows best security pr
 
 #### 4.5.4 File Upload & Storage
 -> need to create table (if we are allowing multiple image) or field (for multiple image can store data in array)
--> need a separate folder to store image in api project 
--> need image get API to get the store image
+-> we can create Table to store multiple image path eith bootcamp id
 - **Multer Middleware** ensures only valid file types are accepted.
 - **File Size Limitations** prevent excessive storage usage.
 
