@@ -497,11 +497,11 @@ The DevCamper API is RESTful, supporting CRUD operations on bootcamps, courses, 
 
 #### **Course enroll API**
 
-| Method | Endpoint                     | Description                | Authentication     |
-| ------ | ---------------------------- | -------------------------- | ------------------ |
-| POST   | `/api/v1/enroll/courses/:id` | Enroll for course          | Authenticated User |
-| GET    | `/api/v1/enroll/courses`     | Get enroll courses list    | Authenticated User |
-| DELETE | `/api/v1/enroll/courses/:id` | remove enrollment          | Authenticated User |
+| Method | Endpoint                       | Description                | Authentication     |
+| ------ | ------------------------------ | -------------------------- | ------------------ |
+| POST   | `/api/v1/enroll/bootcamps/:id` | Enroll for course          | Authenticated User |
+| GET    | `/api/v1/enroll/bootcamps`     | Get enroll courses list    | Authenticated User |
+| DELETE | `/api/v1/enroll/bootcamps/:id` | remove enrollment          | Authenticated User |
 
 ### 4.4 Database Schema
 
