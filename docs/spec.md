@@ -575,7 +575,6 @@ The DevCamper database uses MongoDB, with structured collections for Bootcamps, 
   "jobGuarantee": "Boolean",
   "acceptGi": "Boolean",
   "user": "ObjectId",
-  "bootccamp_img": "String",
   "createdAt": "Date",
   "actv": "Number
 }
