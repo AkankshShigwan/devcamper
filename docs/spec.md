@@ -464,7 +464,7 @@ The DevCamper API is RESTful, supporting CRUD operations on bootcamps, courses, 
 
 #### 4.3.2 Endpoints Overview
 
-##### Bootcamps API
+#### **Bootcamps API**
 
 | Method | Endpoint                                                                   | Description                           | Authentication |
 | ------ | -------------------------------------------------------------------------- | ------------------------------------- | -------------- |
@@ -476,7 +476,6 @@ The DevCamper API is RESTful, supporting CRUD operations on bootcamps, courses, 
 | GET    | `/api/v1/bootcamps?housing=true`                                           | Get bootcamps based on housing        | Public         |
 | GET    | `/api/v1/bootcamps?averageCost[gt]=10000`                                  | Get bootcamps based on costing        | Public         |
 | GET    | `/api/v1/bootcamps?select=name,description,housing&sort=-name&limit=2`     | Get specific bootcamp details         | Public         |
-| GET    | `/api/v1/bootcamps?page=1&limit=2&select=name`                             | Get bootcamp details by pagination    | Public         |
 | GET    | `/api/v1/bootcamps?page=1&limit=2&select=name`                             | Get bootcamp details by pagination    | Public         |
 | POST   | `/api/v1/bootcamps`                                                        | Create a new bootcamp                 | Publisher      |
 | PUT    | `/api/v1/bootcamps/:id`                                                    | Update bootcamp details               | Publisher      |
@@ -533,7 +532,7 @@ The DevCamper API is RESTful, supporting CRUD operations on bootcamps, courses, 
 | PUT       | `/api/v1/reviews/:id`                        | Update a reviews               | Authenticated User |
 | DELETE    | `/api/v1/reviews/:id`                        | Delete a reviews               | Authenticated User |
 
-#### **Course enroll API**
+#### **Bootcamp enroll API**
 
 | Method | Endpoint                       | Description                | Authentication     |
 | ------ | ------------------------------ | -------------------------- | ------------------ |
@@ -576,7 +575,7 @@ The DevCamper database uses MongoDB, with structured collections for Bootcamps, 
   "acceptGi": "Boolean",
   "user": "ObjectId",
   "createdAt": "Date",
-  "actv": "Number
+  "actv": "Number"
 }
 ```
 
