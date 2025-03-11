@@ -430,7 +430,7 @@ DevCamper follows a **microservices-based architecture** with a RESTful API back
 
 - **Framework**: React.js -> version 18.3.1 (with Next.js -> version 15.1.6 for SSR, if needed)
 - **State Management**: Redux Toolkit -> version 9.2.0
-- **Styling**: Tailwind CSS -> version 3.0.23
+- **Styling**: react bootstrap -> version 3.0.23
 - **UI Components**: ShadCN/UI, Material UI -> version 5.12.0
 - **Routing**: React Router -> version 6.14.1
 
@@ -440,12 +440,10 @@ DevCamper follows a **microservices-based architecture** with a RESTful API back
 - **Authentication**: JSON Web Tokens (JWT)
 - **ORM/ODM**: Mongoose (for MongoDB) -> version 8.5.2
 - **Validation**: Joi / Express Validator
-- **Caching**: Redis (for API response caching)
-- **Background Jobs**: BullMQ (for processing async tasks)
 
 #### Database
 
-- **Database**: MongoDB Atlas -> version 8.0.4 
+- **Database**: MongoDB compass -> version 8.0.4 
 - **Schema Modeling**: Mongoose ODM
 - **Indexing & Search**: MongoDB Indexes & Geospatial Queries
 
@@ -468,32 +466,72 @@ The DevCamper API is RESTful, supporting CRUD operations on bootcamps, courses, 
 
 ##### Bootcamps API
 
-| Method | Endpoint                | Description               | Authentication |
-| ------ | ----------------------- | ------------------------- | -------------- |
-| GET    | `/api/v1/bootcamps`     | Fetch all bootcamps       | Public         |
-| GET    | `/api/v1/bootcamps/:id` | Fetch a specific bootcamp | Public         |
-| POST   | `/api/v1/bootcamps`     | Create a new bootcamp     | Publisher      |
-| PUT    | `/api/v1/bootcamps/:id` | Update bootcamp details   | Publisher      |
-| DELETE | `/api/v1/bootcamps/:id` | Delete a bootcamp         | Admin          |
+| Method | Endpoint                                                                   | Description                           | Authentication |
+| ------ | -------------------------------------------------------------------------- | ------------------------------------- | -------------- |
+| GET    | `/api/v1/bootcamps`                                                        | Fetch all bootcamps                   | Public         |
+| GET    | `/api/v1/bootcamps/:id`                                                    | Fetch a specific bootcamp             | Public         |
+| GET    | `/api/v1/bootcamps/radius/:zipcode/:distance`                              | Get bootcamps within a radius         | Public         |
+| GET    | `/api/v1/bootcamps?location.city=cityname`                                 | Get bootcamps within a city           | Public         |
+| GET    | `/api/v1/bootcamps?careers[in]=Business`                                   | Get bootcamps based on careers        | Public         |
+| GET    | `/api/v1/bootcamps?housing=true`                                           | Get bootcamps based on housing        | Public         |
+| GET    | `/api/v1/bootcamps?averageCost[gt]=10000`                                  | Get bootcamps based on costing        | Public         |
+| GET    | `/api/v1/bootcamps?select=name,description,housing&sort=-name&limit=2`     | Get specific bootcamp details         | Public         |
+| GET    | `/api/v1/bootcamps?page=1&limit=2&select=name`                             | Get bootcamp details by pagination    | Public         |
+| GET    | `/api/v1/bootcamps?page=1&limit=2&select=name`                             | Get bootcamp details by pagination    | Public         |
+| POST   | `/api/v1/bootcamps`                                                        | Create a new bootcamp                 | Publisher      |
+| PUT    | `/api/v1/bootcamps/:id`                                                    | Update bootcamp details               | Publisher      |
+| PUT    | `/api/v1/bootcamps/:id/photo`                                              | upload bootcamp photo                 | Public         |
 
 #### **Courses API**
 
-| Method | Endpoint                        | Description                | Authentication |
-| ------ | ------------------------------- | -------------------------- | -------------- |
-| GET    | `/api/v1/courses`               | Fetch all courses          | Public         |
-| GET    | `/api/v1/bootcamps/:id/courses` | Get courses for a bootcamp | Public         |
-| POST   | `/api/v1/bootcamps/:id/courses` | Add a course to a bootcamp | Publisher      |
-| PUT    | `/api/v1/courses/:id`           | Update a course            | Publisher      |
-| DELETE | `/api/v1/courses/:id`           | Delete a course            | Publisher      |
+| Method | Endpoint                                              | Description                             | Authentication |
+| ------ | ----------------------------------------------------- | --------------------------------------- | -------------- |
+| GET    | `/api/v1/courses`                                     | Fetch all courses                       | Public         |
+| GET    | `/api/v1/bootcamps/:id/courses`                       | Get courses for a bootcamp              | Public         |
+| GET    | `/api/v1/courses/?select=title`                       | Get courses title                       | Public         |
+| GET    | `/api/v1/courses/?page=2&limit=1`                     | Get courses by pagination               | Public         |
+| POST   | `/api/v1/bootcamps/:id/courses`                       | Add a course to a bootcamp              | Publisher      |
+| PUT    | `/api/v1/courses/:id`                                 | Update a course                         | Publisher      |
+| PUT    | `/api/v1/bootcamps/:bootcampId/courses/:id`           | Update course for a bootcamp            | Publisher      |
+| DELETE | `/api/v1/courses/:id`                                 | Delete a course                         | Publisher      |
+| DELETE | `/api/v1/bootcamps/:bootcampId/courses/:id`           | Delete course for a bootcamp            | Publisher      |
 
-#### **Users API**
+#### **Auth API**
 
-| Method | Endpoint                | Description                | Authentication     |
-| ------ | ----------------------- | -------------------------- | ------------------ |
-| POST   | `/api/v1/auth/register` | Register a new user        | Public             |
-| POST   | `/api/v1/auth/login`    | Authenticate a user        | Public             |
-| GET    | `/api/v1/auth/me`       | Get logged-in user details | Authenticated User |
-| PUT    | `/api/v1/auth/update`   | Update user profile        | Authenticated User |
+| Method | Endpoint                                     | Description                    | Authentication     |
+| ------ | -------------------------------------------- | ------------------------------ | ------------------ |
+| POST   | `/api/v1/auth/register`                      | Register a new user            | Public             |
+| POST   | `/api/v1/auth/login`                         | Authenticate a user            | Public             |
+| POST   | `/api/v1/auth/logout`                        | Logout user                    | Authenticated User |
+| POST   | `/api/v1/auth/forgotpassword`                | Forgot password generate token | Authenticated User |
+| GET    | `/api/v1/auth/me`                            | Get logged-in user details     | Authenticated User |
+| PUT    | `/api/v1/auth/update`                        | Update user profile            | Authenticated User |
+| PUT    | `/api/v1/users/resetpassword/:resettoken`    | Reset password                 | Authenticated User |
+| PUT    | `/api/v1/auth/updatedetails`                 | Update user details            | Authenticated User |
+| PUT    | `/api/v1/auth/updatepassword`                | Update user password           | Authenticated User |
+
+
+#### **User API**
+
+| Method    | Endpoint                                     | Description                    | Authentication     |
+| ------    | -------------------------------------------- | ------------------------------ | ------------------ |
+| GET       | `/api/v1/users/`                             | Get all users                  | Admin              |
+| GET       | `/api/v1/users/:id`                          | Fetch a specific users         | Admin              |
+| POST      | `/api/v1/users`                              | Create User                    | Admin              |
+| POST      | `/api/v1/users:id`                           | Update User                    | Admin              |
+| DELETE    | `/api/v1/users:id`                           | Delete User                    | Admin              |
+
+
+#### **Review API**
+
+| Method    | Endpoint                                     | Description                    | Authentication     |
+| ------    | -------------------------------------------- | ------------------------------ | ------------------ |
+| GET       | `/api/v1/reviews`                            | Get all reviews                | Publisher          |
+| GET       | `/api/v1/reviews/:id`                        | Fetch a specific reviews       | Publisher          |
+| GET       | `/api/v1/bootcamps/:bootcampId/reviews`      | Get reviews for bootcamp       | Publisher          |
+| POST      | `/api/v1/reviews/:id`                        | Add a reviews                  | Authenticated User |
+| PUT       | `/api/v1/reviews/:id`                        | Update a reviews               | Authenticated User |
+| DELETE    | `/api/v1/reviews/:id`                        | Delete a reviews               | Authenticated User |
 
 #### **Course enroll API**
 
@@ -502,6 +540,12 @@ The DevCamper API is RESTful, supporting CRUD operations on bootcamps, courses, 
 | POST   | `/api/v1/enroll/bootcamps/:id` | Enroll for course          | Authenticated User |
 | GET    | `/api/v1/enroll/bootcamps`     | Get enroll courses list    | Authenticated User |
 | DELETE | `/api/v1/enroll/bootcamps/:id` | remove enrollment          | Authenticated User |
+
+#### **Geolocation API**
+
+| Method | Endpoint                       | Description                | Authentication     |
+| ------ | ------------------------------ | -------------------------- | ------------------ |
+| POST   | `/api/v1/bootcamps/testgeocode`| get geolocation            | Authenticated User |
 
 ### 4.4 Database Schema
 
@@ -609,7 +653,7 @@ Security is a core component of DevCamper. The platform follows best security pr
 #### 4.5.2 Data Protection
 
 - **Password Hashing** – User passwords are hashed using **bcrypt** before storing.
-- **Environment Variables** – Sensitive credentials (database URL, API keys) are stored in `.env` files and never exposed in code.
+- **Environment Variables** – Sensitgfvive credentials (database URL, API keys) are stored in `.env` files and never exposed in code.
 - **MongoDB Query Injection Protection** – All queries are sanitized using **express-mongo-sanitize**.
 
 #### 4.5.3 API Security
