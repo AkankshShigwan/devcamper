@@ -430,7 +430,7 @@ DevCamper follows a **microservices-based architecture** with a RESTful API back
 
 - **Framework**: React.js -> version 18.3.1 (with Next.js -> version 15.1.6 for SSR, if needed)
 - **State Management**: Redux Toolkit -> version 9.2.0
-- **Styling**: react bootstrap -> version 3.0.23
+- **Styling**: react bootstrap -> version 2.10.6
 - **UI Components**: ShadCN/UI, Material UI -> version 5.12.0
 - **Routing**: React Router -> version 6.14.1
 
