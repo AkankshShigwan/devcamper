@@ -51,9 +51,9 @@ const BootcampReviewsPage = () => {
               Rating
             </h1>
             {/* <!-- Buttons --> */}
-            <a href="/bootcamps/:bootcampId/reviews/add" className="btn btn-primary btn-block my-3">
+            <Link to={`/bootcamps/${bootcampId}/reviews/add`} className="btn btn-primary btn-block my-3">
               <FaPencil /> Review This Bootcamp
-            </a>
+            </Link>
           </div>
         </div>
       </div>

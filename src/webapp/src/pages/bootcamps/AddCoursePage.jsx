@@ -13,7 +13,8 @@ const AddCoursePage = () => {
     title: '',
     duration: '',
     tuition: '',
-    minimumSkill: 'Beginner (Any)', // Initialize to default
+    weeks: '',
+    minimumSkill: 'intermediate', // Initialize to default
     description: '',
     scholarshipAvailable: false,
   });
@@ -68,9 +69,9 @@ const AddCoursePage = () => {
                     <Form.Control type="text" name="title" placeholder="Title" onChange={onChange} required />
                   </Form.Group>
 
-                  <Form.Group controlId="duration" className="mb-3">
+                  <Form.Group controlId="weeks" className="mb-3">
                     <Form.Label>Duration</Form.Label>
-                    <Form.Control type="number" name="duration" placeholder="Duration" onChange={onChange} required />
+                    <Form.Control type="number" name="weeks" placeholder="Duration" onChange={onChange} required />
                     <Form.Text className="text-muted">Enter number of weeks course lasts</Form.Text>
                   </Form.Group>
 

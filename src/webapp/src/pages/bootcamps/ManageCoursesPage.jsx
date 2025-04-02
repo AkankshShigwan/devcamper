@@ -74,7 +74,7 @@ const ManageCoursesPage = () => {
                 <tbody>
                   {courses.map((course) => (
                     <tr key={course.id}>
-                      <td>{course.courses_name}</td>
+                      <td>{course.title}</td>
                       <td>
                         <Link to="add-course.html" className="btn btn-secondary mx-2">
                           <FaPencilAlt />

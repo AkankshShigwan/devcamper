@@ -42,7 +42,7 @@ function Header() {
                     <Dropdown.Item as={Link} to="/manage-reviews">
                       <FaStar /> Manage Reviews
                     </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/account/manage">
+                    <Dropdown.Item as={Link} to="/user/manage">
                       <FaUser /> Manage Account
                     </Dropdown.Item>
                     <Dropdown.Item onClick={handleLogout}>
