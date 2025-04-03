@@ -15,6 +15,8 @@ const ManageBootcampPage = () => {
     fetchBootcamp();
   }, [bootcampId]);
 
+  console.log('bootcampId',bootcampId);
+
   return (
     <Container className="mt-5">
       <Row>
