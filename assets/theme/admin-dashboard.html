@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://kit.fontawesome.com/3da1a747b2.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css" rel="stylesheet" />
+    <title>DevCamper | Find a coding bootcamp</title>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-laptop-code"></i> DevCamper</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown">
+                            <i class="fas fa-user"></i> Account
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="manage-bootcamp.html">Manage Bootcamp</a>
+                            <a class="dropdown-item" href="manage-reviews.html">Manage Reviews</a>
+                            <a class="dropdown-item" href="manage-account.html">Manage Account</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </li>
+                    <li class="nav-item d-none d-sm-block">
+                        <a class="nav-link" href="#">|</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bootcamps.html">Browse Bootcamps</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="browse my-5">
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-6">
+                    <div class="card card-body mb-4">
+                        <h4 class="mb-3">Active Users</h4>
+                        <h1 class="mb-3 user-count text-success">40</h1>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card card-body mb-4">
+                        <h4 class="mb-3">Latest Reviews</h4>
+                        <div class="">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-user mr-2"></i>
+                                <span>Kevin Smith</span>
+                                <div class="text-warning mx-2">
+                                    ★★★★★
+                                </div>
+                            </div>
+                            
+                            <p class="card-text">
+                                Lorem, ipsum dolor sit amet .....
+                            </p>
+                        </div>
+                        <div class="mt-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-user mr-2"></i>
+                                <span>Kevin Smith</span>
+                                <div class="text-warning mx-2">
+                                    ★★★
+                                </div>
+                            </div>
+                            
+                            <p class="card-text">
+                                Lorem, ipsum dolor sit amet .....
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main col -->
+                
+            </div>
+            <div class="">
+                <h2 class="my-3">Top Rated Bootcamps</h2>
+                <!-- Bootcamps -->
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-3">
+                            <img src="img/image_1.jpg" class="card-img" alt="..." />
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="bootcamp.html"
+                                        >Devworks Bootcamp
+                                        <span class="float-right badge badge-success"
+                                            >9.8</span
+                                        ></a
+                                    >
+                                </h5>
+                                <span class="badge badge-dark mb-2">Boston, MA</span>
+                                <p class="card-text">
+                                    Web Development, UI/UX, Mobile Development
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-3">
+                            <img src="img/image_2.jpg" class="card-img" alt="..." />
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="bootcamp.html"
+                                        >ModernTech Bootcamp
+                                        <span class="float-right badge badge-success"
+                                            >7.5</span
+                                        ></a
+                                    >
+                                </h5>
+                                <span class="badge badge-dark mb-2">Boston, MA</span>
+                                <p class="card-text">
+                                    Web Development, UI/UX, Mobile Development
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-3">
+                            <img src="img/image_3.jpg" class="card-img" alt="..." />
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="bootcamp.html"
+                                        >Codemasters
+                                        <span class="float-right badge badge-success"
+                                            >7.2</span
+                                        ></a
+                                    >
+                                </h5>
+                                <span class="badge badge-dark mb-2">Burlington, VT</span>
+                                <p class="card-text">
+                                    Web Development, Data Science, Marketing
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-3">
+                            <img src="img/image_4.jpg" class="card-img" alt="..." />
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="bootcamp.html"
+                                        >DevCentral Bootcamp
+                                        <span class="float-right badge badge-success"
+                                            >6.4</span
+                                        ></a
+                                    >
+                                </h5>
+                                <span class="badge badge-dark mb-2">Kingston, RI</span>
+                                <p class="card-text">
+                                    Web Development, UI/UX, Mobile Development, Marketing
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
