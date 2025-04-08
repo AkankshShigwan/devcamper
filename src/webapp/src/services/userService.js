@@ -44,9 +44,8 @@ const userService = {
   },
 
   getMe: async () => {
-    const uri = await fetchApiEndPoint(`/user/me`);
+    const uri = await fetchApiEndPoint(`/user/getMe`);
     const token = getToken();
-    console.log('token', token)
     const res = await fetch(uri, {
       method: 'GET',
       headers: {

@@ -20,7 +20,7 @@ const courseService = {
   },
 
   createCourse: async (bootcampId, course, token) => {
-    const uri = await fetchApiEndPoint(`/bootcamps/${bootcampId}/courses`);
+    const uri = await fetchApiEndPoint(`/courses/bootcamps/${bootcampId}/`);
     const res = await fetch(uri, {
       method: 'POST',
       headers: {

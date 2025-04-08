@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import bootcampService from '../../services/bootcampService';
 import { useAuth } from '../../contexts/AuthContext';
-import { Link } from 'react-router-dom';
-import { Button, Card, Col, Container, Row, Table } from 'react-bootstrap';
-import { GrClose, GrEdit } from 'react-icons/gr';
 
 const ManageBootcampsPage = () => {
   const { user } = useAuth();
@@ -33,44 +30,33 @@ const ManageBootcampsPage = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <Container className="mt-5">
-      <Row >
-        <Col md={8} className='m-auto'>
-          <Card className="bg-white py-2 px-4">
-            <Card.Body >
+    <section className="container mt-5">
+      <div className="row">
+        <div className="col-md-8 m-auto">
+          <div className="card bg-white py-2 px-4">
+            <div className="card-body">
               <h1 className="mb-4">Manage Bootcamps</h1>
-              <Table striped hover>
+              <table className="table table-striped">
                 <thead>
                   <tr>
                     <th scope="col">Bootcamp</th>
                     <th scope="col">Rating</th>
-                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {bootcamps.map((b) => (
                     <tr key={b.id}>
                       <td>{b.name}</td>
-                      <td>8</td>
-                      <td className='text-center'>
-                        <Link to={`/bootcamps/${b.id}/manage`}>
-                          <Button variant="secondary" className="me-2 mb-1">
-                            <GrEdit />
-                          </Button>
-                        </Link>
-                        <Button variant="danger" className="mb-1">
-                          <GrClose />
-                        </Button>
-                      </td>
+                      <td>{b.averageRating}</td>
                     </tr>
                   ))}
                 </tbody>
-              </Table>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
