@@ -30,3 +30,7 @@ img {
     border-top: 2px dashed #7b7777; /* Adjust color as needed */
     margin: 2rem 0; /* Adjust margin as needed */
 }
+
+.user-count {
+    font-size: 73px;
+}
