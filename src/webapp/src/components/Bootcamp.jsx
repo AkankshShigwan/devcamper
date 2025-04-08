@@ -19,7 +19,7 @@ const Bootcamp = ({ id, photo, name, averageRating, location, careers }) => {
               </Link>
             </h5>
             <span className="badge badge-dark mb-2">
-              {location.city}, {location.state}
+              {location?.city}, {location?.state}
             </span>
             <p className="card-text">{careers.join(', ')}</p>
           </div>
