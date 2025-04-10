@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import bootcampService from '../../services/bootcampService';
+import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 
 const AddBootcampPage = () => {
   const navigate = useNavigate();
@@ -51,146 +52,96 @@ const AddBootcampPage = () => {
   if (error) return <h1>Error: {error}</h1>;
 
   return (
-    <section className="container mt-5">
-      <div className="container">
-        <h1 className="mb-2">Add Bootcamp</h1>
-        <form onSubmit={onSubmit}>
-          <div className="row">
-            <div className="col-md-6">
-              <div className="card bg-white py-2 px-4">
-                <div className="card-body">
-                  <h3>Location & Contact</h3>
-                  <p className="text-muted">If multiple locations, use the main or largest</p>
-                  <div className="form-group">
-                    <label>Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      className="form-control"
-                      placeholder="Bootcamp Name"
-                      required
-                      value={name}
-                      onChange={onChange}
+    <Container className="mt-5">
+      <h1 className="mb-2">Add Bootcamp</h1>
+      <p className='pb-3'>Important: You must be affiliated with a bootcamp to add to DevCamper</p>
+      <Form onSubmit={onSubmit}>
+        <Row className="row">
+          <Col md={6}>
+            <Card className="bg-white py-2 px-4 card-height">
+              <Card.Body>
+                <h3>Location & Contact</h3>
+                <p className="text-muted">If multiple locations, use the main or largest</p>
+                <Form.Group className="mt-3 mb-3" controlId="bootcamp_name">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control type="text" placeholder="Bootcamp Name" required name="name" value={name} onChange={onChange} />
+                </Form.Group>
+                <Form.Group className="mt-3 mb-3" controlId="bootcamp_address">
+                  <Form.Label>Address</Form.Label>
+                  <Form.Control type="text" placeholder="Full Address" required name="address" value={address} onChange={onChange} />
+                  <Form.Text className="text-muted" style={{ fontSize: '0.75rem' }}>Street, city, state, etc.</Form.Text>
+                </Form.Group>
+                <Form.Group className="mt-3 mb-3" controlId="bootcamp_number">
+                  <Form.Label>Phone Number</Form.Label>
+                  <Form.Control type="number" placeholder="Phone" required name="phone" value={phone} onChange={onChange} />
+                </Form.Group>
+                <Form.Group className="mt-3 mb-3" controlId="bootcamp_email">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control type="email" placeholder="Contact email" required name="email" value={email} onChange={onChange} />
+                </Form.Group>
+                <Form.Group className="mt-3 mb-3" controlId="bootcamp_website">
+                  <Form.Label>Website</Form.Label>
+                  <Form.Control type="text" placeholder="Website URL" required name="website" value={website} onChange={onChange} />
+                </Form.Group>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col md={6}>
+            <Card className="bg-white py-2 px-4 card-height">
+              <Card.Body >
+                <h3>Other Info</h3>
+                <Form.Group className="mb-3" controlId="bootcamp_desc">
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control as="textarea" rows={5} name="description" placeholder="Description (What you offer, etc)" maxLength="500" onChange={onChange} value={description} />
+                  <Form.Text className="text-muted" style={{ fontSize: '0.75rem' }}>No more than 500 characters</Form.Text>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="bootcamp_career">
+                  <Form.Label>Careers</Form.Label>
+                  <Form.Select aria-label="" multiple defaultValue={['select']}>
+                    <option value="select">Select all that apply</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Mobile Development">Mobile Development</option>
+                    <option value="UI/UX">UI/UX</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Business">Business</option>
+                    <option value="Other">Other</option>
+                  </Form.Select>
+                </Form.Group>
+                {['checkbox'].map((type) => (
+                  <div key={`default-${type}`} className="mb-3">
+                    <Form.Check 
+                      type={type}
+                      id={`Housing`}
+                      label={`Housing`}
+                    />
+                    <Form.Check 
+                      type={type}
+                      id={`Job Assistance`}
+                      label={`Job Assistance`}
+                    />
+                    <Form.Check 
+                      type={type}
+                      id={`Job Guarantee`}
+                      label={`Job Guarantee`}
+                    />
+                    <Form.Check 
+                      type={type}
+                      id={`Accepts GI Bill`}
+                      label={`Accepts GI Bill`}
                     />
                   </div>
-                  <div className="form-group">
-                    <label>Address</label>
-                    <input
-                      type="text"
-                      name="address"
-                      className="form-control"
-                      placeholder="Full Address"
-                      required
-                      onChange={onChange}
-                      value={address}
-                    />
-                    <small className="form-text text-muted">Street, city, state, etc</small>
-                  </div>
-                  <div className="form-group">
-                    <label>Phone Number</label>
-                    <input
-                      type="text"
-                      name="phone"
-                      className="form-control"
-                      placeholder="Phone"
-                      onChange={onChange}
-                      value={phone}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Email</label>
-                    <input
-                      type="text"
-                      name="email"
-                      className="form-control"
-                      placeholder="Contact Email"
-                      onChange={onChange}
-                      value={email}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Website</label>
-                    <input
-                      type="text"
-                      name="website"
-                      className="form-control"
-                      placeholder="Website URL"
-                      onChange={onChange}
-                      value={website}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="card bg-white py-2 px-4">
-                <div className="card-body">
-                  <h3>Other Info</h3>
-                  <div className="form-group">
-                    <label>Description</label>
-                    <textarea
-                      name="description"
-                      rows="5"
-                      className="form-control"
-                      placeholder="Description (What you offer, etc)"
-                      maxLength="500"
-                      onChange={onChange}
-                      value={description}
-                    ></textarea>
-                    <small className="form-text text-muted">No more than 500 characters</small>
-                  </div>
-                  <div className="form-group">
-                    <label>Careers</label>
-                    <select name="careers" className="custom-select" multiple defaultValue={['select']}>
-                      <option value="select">Select all that apply</option>
-                      <option value="Web Development">Web Development</option>
-                      <option value="Mobile Development">Mobile Development</option>
-                      <option value="UI/UX">UI/UX</option>
-                      <option value="Data Science">Data Science</option>
-                      <option value="Business">Business</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-                  <div className="form-check">
-                    <input className="form-check-input" type="checkbox" name="housing" id="housing" />
-                    <label className="form-check-label" htmlFor="housing">
-                      Housing
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input className="form-check-input" type="checkbox" name="jobAssistance" id="jobAssistance" />
-                    <label className="form-check-label" htmlFor="jobAssistance">
-                      Job Assistance
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input className="form-check-input" type="checkbox" name="jobGuarantee" id="jobGuarantee" />
-                    <label className="form-check-label" htmlFor="jobGuarantee">
-                      Job Guarantee
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input className="form-check-input" type="checkbox" name="acceptGi" id="acceptGi" />
-                    <label className="form-check-label" htmlFor="acceptGi">
-                      Accepts GI Bill
-                    </label>
-                  </div>
-                  <p className="text-muted my-4">
-                    *After you add the bootcamp, you can add the specific courses offered
-                  </p>
-                </div>
-              </div>
-            </div>
+                ))}
+                <Form.Text className="text-muted" style={{ fontSize: '0.95rem' }}>*After you add the bootcamp, you can add the specific courses offered</Form.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+          <div className="form-group my-4">
+            <Button type="submit" variant="success" className='btn-block'>Submit Bootcamp</Button>
           </div>
-          <div className="form-group my-2">
-            <input type="submit" value="Submit Bootcamp" className="btn btn-primary btn-block" />
-            {/*<a href="manage-bootcamp.html" className="btn btn-danger btn-block mb-4"
-                    >Cancel</a
-                > */}
-          </div>
-        </form>
-      </div>
-    </section>
+        </Row>
+      </Form>
+    </Container>
   );
 };
 
