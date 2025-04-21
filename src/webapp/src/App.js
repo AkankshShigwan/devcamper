@@ -26,7 +26,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/publisher-dashboard" element={<PublisherDashboard />} />
+            <Route path="/dashboard/publisher" element={<PublisherDashboard />} />
             <Route path="/user/login" element={<LoginPage />} />
             <Route path="/user/register" element={<RegisterPage />} />
             <Route path="/user/password/reset" element={<ResetPasswordPage />} />
