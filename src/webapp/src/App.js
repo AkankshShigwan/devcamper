@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { HomePage, AboutPage, NotFoundPage } from './pages';
+import { HomePage, AboutPage, NotFoundPage, UserDashboard, AdminDashboardPage, PublisherDashboard } from './pages';
 import { LoginPage, RegisterPage, ManageAccountPage, ResetPasswordPage, UpdatePasswordPage } from './pages/user';
 import {
   AddBootcampPage,
@@ -26,6 +26,9 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/dashboard/user" element={<UserDashboard />} />
+            <Route path="/dashboard/admin" element={<AdminDashboardPage />} />
+            <Route path="/dashboard/publisher" element={<PublisherDashboard />} />
             <Route path="/user/login" element={<LoginPage />} />
             <Route path="/user/register" element={<RegisterPage />} />
             <Route path="/user/password/reset" element={<ResetPasswordPage />} />
