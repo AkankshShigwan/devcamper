@@ -27,6 +27,18 @@ const UserSchema = new mongoose.Schema(
       maxlength: [25, 'Password must be between 6 and 25 characters'],
       select: false,
     },
+    enrollment: [
+      {
+        bootcamp_id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Bootcamp',
+        },
+        active_flag: {
+          type: Number,
+          default: 1,
+        },
+      }
+    ],
     resetPasswordToken: String,
     resetPasswordExpire: Date,
   },
