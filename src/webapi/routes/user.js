@@ -8,6 +8,7 @@ import {
   resetPassword,
   updateDetails,
   updatePassword,
+  enrollBootcamp
 } from '../controllers/user.js';
 import { protect } from '../middleware/auth.js';
 
@@ -21,5 +22,7 @@ router.route('/updatedetails').put(protect, updateDetails);
 router.route('/updatepassword').put(protect, updatePassword);
 router.route('/forgotpassword').post(forgotPassword);
 router.route('/resetpassword/:resettoken').put(resetPassword);
+router.route('/bootcamp/:bootcampId/enrollment').put(protect, enrollBootcamp);
+
 
 export default router;
