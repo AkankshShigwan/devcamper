@@ -186,4 +186,32 @@ const sendTokenResponse = (user, statusCode, res) => {
   return res.status(statusCode).cookie('token', token, options).json({ success: true, token });
 };
 
-export { register, login, getMe, forgotPassword, resetPassword, updateDetails, updatePassword, logout };
+// @desc    enrollment add
+// @route   PUT /api/v1/user/bootcamp/:id/enrollment
+// @access  Private
+const enrollBootcamp = asyncHandler(async (req, res, next) => {
+
+  const bootcampId = req.params.bootcampId;
+
+  const existing_bootcamp = await User.findOne({
+    _id: req.user.id,
+    'enrollment.bootcamp_id': bootcampId,
+  });
+
+  var user = '';
+
+  if (!existing_bootcamp) {
+    user = await User.findByIdAndUpdate(req.user.id, { $addToSet: { enrollment: { bootcamp_id: bootcampId, active_flag: 1 } } },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+  } else {
+    user = 'User already enrolled in this bootcamp';
+  }
+
+  return res.status(200).json({ success: true, data: user });
+});
+
+export { register, login, getMe, forgotPassword, resetPassword, updateDetails, updatePassword, logout, enrollBootcamp };
