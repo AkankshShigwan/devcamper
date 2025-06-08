@@ -26,6 +26,6 @@ router.route('/forgotpassword').post(forgotPassword);
 router.route('/resetpassword/:resettoken').put(resetPassword);
 router.route('/bootcamp/:bootcampId/enrollment').put(protect, enrollBootcamp);
 router.route('/withdraw/:bootcampId/enrollment').put(protect, authorize('user'), withdrawEnrollment);
-router.route('/enrollments').post(protect, authorize('user'), getEnrollments);
+router.route('/enrollments').get(protect, getEnrollments);
 
 export default router;

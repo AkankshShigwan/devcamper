@@ -272,7 +272,7 @@ const withdrawEnrollment = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Get enrollments
-// @route   Post /api/v1/enrollments
+// @route   Get /api/v1/enrollments
 // @access  Private
 const getEnrollments = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.user.id).populate('enrollment.bootcamp_id');
